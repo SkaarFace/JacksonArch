@@ -1,4 +1,4 @@
-json.array!(@contract_types) do |contract_type|
-  json.extract! contract_type, :id
-  json.url contract_type_url(contract_type, format: :json)
+json.array!(@contracts) do |contract|
+  json.extract! contract, :id
+  json.url contract_url(contract, format: :json)
 end

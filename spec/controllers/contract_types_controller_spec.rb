@@ -18,81 +18,81 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe ContractTypesController do
+describe ContractsController do
 
   # This should return the minimal set of attributes required to create a valid
-  # ContractType. As you add validations to ContractType, be sure to
+  # Contract. As you add validations to Contract, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { {  } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # ContractTypesController. Be sure to keep this updated too.
+  # ContractsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET index" do
-    it "assigns all contract_types as @contract_types" do
-      contract_type = ContractType.create! valid_attributes
+    it "assigns all contracts as @contracts" do
+      contract = Contract.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:contract_types).should eq([contract_type])
+      assigns(:contracts).should eq([contract])
     end
   end
 
   describe "GET show" do
-    it "assigns the requested contract_type as @contract_type" do
-      contract_type = ContractType.create! valid_attributes
-      get :show, {:id => contract_type.to_param}, valid_session
-      assigns(:contract_type).should eq(contract_type)
+    it "assigns the requested contract as @contract" do
+      contract = Contract.create! valid_attributes
+      get :show, {:id => contract.to_param}, valid_session
+      assigns(:contract).should eq(contract)
     end
   end
 
   describe "GET new" do
-    it "assigns a new contract_type as @contract_type" do
+    it "assigns a new contract as @contract" do
       get :new, {}, valid_session
-      assigns(:contract_type).should be_a_new(ContractType)
+      assigns(:contract).should be_a_new(Contract)
     end
   end
 
   describe "GET edit" do
-    it "assigns the requested contract_type as @contract_type" do
-      contract_type = ContractType.create! valid_attributes
-      get :edit, {:id => contract_type.to_param}, valid_session
-      assigns(:contract_type).should eq(contract_type)
+    it "assigns the requested contract as @contract" do
+      contract = Contract.create! valid_attributes
+      get :edit, {:id => contract.to_param}, valid_session
+      assigns(:contract).should eq(contract)
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new ContractType" do
+      it "creates a new Contract" do
         expect {
-          post :create, {:contract_type => valid_attributes}, valid_session
-        }.to change(ContractType, :count).by(1)
+          post :create, {:contract => valid_attributes}, valid_session
+        }.to change(Contract, :count).by(1)
       end
 
-      it "assigns a newly created contract_type as @contract_type" do
-        post :create, {:contract_type => valid_attributes}, valid_session
-        assigns(:contract_type).should be_a(ContractType)
-        assigns(:contract_type).should be_persisted
+      it "assigns a newly created contract as @contract" do
+        post :create, {:contract => valid_attributes}, valid_session
+        assigns(:contract).should be_a(Contract)
+        assigns(:contract).should be_persisted
       end
 
-      it "redirects to the created contract_type" do
-        post :create, {:contract_type => valid_attributes}, valid_session
-        response.should redirect_to(ContractType.last)
+      it "redirects to the created contract" do
+        post :create, {:contract => valid_attributes}, valid_session
+        response.should redirect_to(Contract.last)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved contract_type as @contract_type" do
+      it "assigns a newly created but unsaved contract as @contract" do
         # Trigger the behavior that occurs when invalid params are submitted
-        ContractType.any_instance.stub(:save).and_return(false)
-        post :create, {:contract_type => {  }}, valid_session
-        assigns(:contract_type).should be_a_new(ContractType)
+        Contract.any_instance.stub(:save).and_return(false)
+        post :create, {:contract => {  }}, valid_session
+        assigns(:contract).should be_a_new(Contract)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        ContractType.any_instance.stub(:save).and_return(false)
-        post :create, {:contract_type => {  }}, valid_session
+        Contract.any_instance.stub(:save).and_return(false)
+        post :create, {:contract => {  }}, valid_session
         response.should render_template("new")
       end
     end
@@ -100,60 +100,60 @@ describe ContractTypesController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested contract_type" do
-        contract_type = ContractType.create! valid_attributes
-        # Assuming there are no other contract_types in the database, this
-        # specifies that the ContractType created on the previous line
+      it "updates the requested contract" do
+        contract = Contract.create! valid_attributes
+        # Assuming there are no other contracts in the database, this
+        # specifies that the Contract created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        ContractType.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => contract_type.to_param, :contract_type => { "these" => "params" }}, valid_session
+        Contract.any_instance.should_receive(:update).with({ "these" => "params" })
+        put :update, {:id => contract.to_param, :contract => { "these" => "params" }}, valid_session
       end
 
-      it "assigns the requested contract_type as @contract_type" do
-        contract_type = ContractType.create! valid_attributes
-        put :update, {:id => contract_type.to_param, :contract_type => valid_attributes}, valid_session
-        assigns(:contract_type).should eq(contract_type)
+      it "assigns the requested contract as @contract" do
+        contract = Contract.create! valid_attributes
+        put :update, {:id => contract.to_param, :contract => valid_attributes}, valid_session
+        assigns(:contract).should eq(contract)
       end
 
-      it "redirects to the contract_type" do
-        contract_type = ContractType.create! valid_attributes
-        put :update, {:id => contract_type.to_param, :contract_type => valid_attributes}, valid_session
-        response.should redirect_to(contract_type)
+      it "redirects to the contract" do
+        contract = Contract.create! valid_attributes
+        put :update, {:id => contract.to_param, :contract => valid_attributes}, valid_session
+        response.should redirect_to(contract)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the contract_type as @contract_type" do
-        contract_type = ContractType.create! valid_attributes
+      it "assigns the contract as @contract" do
+        contract = Contract.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        ContractType.any_instance.stub(:save).and_return(false)
-        put :update, {:id => contract_type.to_param, :contract_type => {  }}, valid_session
-        assigns(:contract_type).should eq(contract_type)
+        Contract.any_instance.stub(:save).and_return(false)
+        put :update, {:id => contract.to_param, :contract => {  }}, valid_session
+        assigns(:contract).should eq(contract)
       end
 
       it "re-renders the 'edit' template" do
-        contract_type = ContractType.create! valid_attributes
+        contract = Contract.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        ContractType.any_instance.stub(:save).and_return(false)
-        put :update, {:id => contract_type.to_param, :contract_type => {  }}, valid_session
+        Contract.any_instance.stub(:save).and_return(false)
+        put :update, {:id => contract.to_param, :contract => {  }}, valid_session
         response.should render_template("edit")
       end
     end
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested contract_type" do
-      contract_type = ContractType.create! valid_attributes
+    it "destroys the requested contract" do
+      contract = Contract.create! valid_attributes
       expect {
-        delete :destroy, {:id => contract_type.to_param}, valid_session
-      }.to change(ContractType, :count).by(-1)
+        delete :destroy, {:id => contract.to_param}, valid_session
+      }.to change(Contract, :count).by(-1)
     end
 
-    it "redirects to the contract_types list" do
-      contract_type = ContractType.create! valid_attributes
-      delete :destroy, {:id => contract_type.to_param}, valid_session
-      response.should redirect_to(contract_types_url)
+    it "redirects to the contracts list" do
+      contract = Contract.create! valid_attributes
+      delete :destroy, {:id => contract.to_param}, valid_session
+      response.should redirect_to(contracts_url)
     end
   end
 
