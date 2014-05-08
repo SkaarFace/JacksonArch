@@ -1,1 +1,5 @@
 h3 Home
+
+- for attribute in current_user.attributes.keys
+  p
+    = "#{attribute.humanize} #{current_user.attributes[attribute].to_s}"

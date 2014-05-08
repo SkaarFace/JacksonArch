@@ -1,0 +1,19 @@
+h1 Listing contract_types
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @contract_types.each do |contract_type|
+      tr
+        td = link_to 'Show', contract_type
+        td = link_to 'Edit', edit_contract_type_path(contract_type)
+        td = link_to 'Destroy', contract_type, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Contract type', new_contract_type_path

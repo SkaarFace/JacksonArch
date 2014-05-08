@@ -1,0 +1,8 @@
+= simple_form_for(@contract_type) do |f|
+  = f.error_notification
+
+  .form-inputs
+    =f.input :type
+    =f.input :terms
+  .form-actions
+    = f.button :submit

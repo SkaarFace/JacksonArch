@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Address line 1:
+  = @location.address_line_1
+p
+  strong Address line 2:
+  = @location.address_line_2
+p
+  strong Zip code:
+  = @location.zip_code
+p
+  strong State:
+  = @location.state
+p
+  strong City:
+  = @location.city
+p
+  strong Latitude:
+  = @location.latitude
+p
+  strong Longitude:
+  = @location.longitude
+
+= link_to 'Edit', edit_location_path(@location)
+'|
+= link_to 'Back', locations_path
