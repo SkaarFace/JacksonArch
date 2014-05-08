@@ -1,74 +1,74 @@
 class ContractsController < ApplicationController
-  before_action :set_contract_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
-  # GET /contract_types
-  # GET /contract_types.json
+  # GET /contracts
+  # GET /contracts.json
   def index
-    @contract_types = ContractType.all
+    @contracts = Contract.all
   end
 
-  # GET /contract_types/1
-  # GET /contract_types/1.json
+  # GET /contracts/1
+  # GET /contracts/1.json
   def show
   end
 
-  # GET /contract_types/new
+  # GET /contracts/new
   def new
-    @contract_type = ContractType.new
+    @contract = Contract.new
   end
 
-  # GET /contract_types/1/edit
+  # GET /contracts/1/edit
   def edit
   end
 
-  # POST /contract_types
-  # POST /contract_types.json
+  # POST /contracts
+  # POST /contracts.json
   def create
-    @contract_type = ContractType.new(contract_type_params)
+    @contract = Contract.new(contract_params)
 
     respond_to do |format|
-      if @contract_type.save
-        format.html { redirect_to @contract_type, notice: 'Contract type was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @contract_type }
+      if @contract.save
+        format.html { redirect_to @contract, notice: 'Contract type was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @contract }
       else
         format.html { render action: 'new' }
-        format.json { render json: @contract_type.errors, status: :unprocessable_entity }
+        format.json { render json: @contract.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /contract_types/1
-  # PATCH/PUT /contract_types/1.json
+  # PATCH/PUT /contracts/1
+  # PATCH/PUT /contracts/1.json
   def update
     respond_to do |format|
-      if @contract_type.update(contract_type_params)
-        format.html { redirect_to @contract_type, notice: 'Contract type was successfully updated.' }
+      if @contract.update(contract_params)
+        format.html { redirect_to @contract, notice: 'Contract type was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @contract_type.errors, status: :unprocessable_entity }
+        format.json { render json: @contract.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /contract_types/1
-  # DELETE /contract_types/1.json
+  # DELETE /contracts/1
+  # DELETE /contracts/1.json
   def destroy
-    @contract_type.destroy
+    @contract.destroy
     respond_to do |format|
-      format.html { redirect_to contract_types_url }
+      format.html { redirect_to contracts_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_contract_type
-      @contract_type = ContractType.find(params[:id])
+    def set_contract
+      @contract = Contract.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def contract_type_params
-      params.require(:contract_type).permit(:type, :terms)
+    def contract_params
+      params.require(:contract).permit(:type, :terms)
     end
 end
