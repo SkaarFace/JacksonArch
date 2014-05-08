@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 20140506040054) do
   create_table "clients", force: true do |t|
     t.string   "name"
     t.string   "phone_number"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "contracts", force: true do |t|
-    t.string   "type"
+    t.string   "classification"
     t.string   "terms"
     t.integer  "job_id"
     t.datetime "created_at"
@@ -40,11 +41,14 @@ ActiveRecord::Schema.define(version: 20140506040054) do
   create_table "job_types", force: true do |t|
     t.string   "name"
     t.integer  "job_category_id"
+    t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "jobs", force: true do |t|
+    t.integer  "job_category_id"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

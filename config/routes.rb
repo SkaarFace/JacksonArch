@@ -1,5 +1,5 @@
 JacksonArch::Application.routes.draw do
-  resources :contract_types
+  resources :contracts
 
   resources :job_types
 

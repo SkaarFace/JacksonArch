@@ -1,7 +1,7 @@
 class CreateContracts < ActiveRecord::Migration
   def up
     create_table :contracts do |t|
-      t.string :type
+      t.string :classification
       t.string :terms
       t.belongs_to :job
       t.timestamps

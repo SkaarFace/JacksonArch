@@ -9,7 +9,7 @@
   <% if current_user.has_role?(:admin) %>
     <li><%= link_to 'Manage Job Categories', job_categories_path %></li>
     <li><%= link_to 'Manage Job Types', job_types_path %></li>
-    <li><%= link_to 'Manage Contract Types', contract_types_path %></li>
+    <li><%= link_to 'Manage Contracts', contracts_path %></li>
   <% end %>
   <% if current_user.has_role?(:client) %>
     <li>Test</li>
