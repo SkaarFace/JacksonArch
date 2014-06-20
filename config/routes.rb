@@ -1,11 +1,11 @@
 JacksonArch::Application.routes.draw do
+  resources :clients
+
   resources :contracts
 
   resources :job_types
 
   resources :job_categories
-
-  resources :clients
 
   resources :jobs
 

@@ -1,5 +1,14 @@
 p#notice = notice
 
+p
+  strong Contract Type:
+  = @job.contract.classification
+p
+  strong Job Type:
+  = @job.job_type.name
+p
+  strong User:
+  = @job.client.name
 
 = link_to 'Edit', edit_job_path(@job)
 '|

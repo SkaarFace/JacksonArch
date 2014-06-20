@@ -1,11 +1,11 @@
 p#notice = notice
 
 p
-  strong Name:
   = @client.name
+
 p
-  strong Phone number:
-  = @client.phone_number
+  = @client.user.name
+
 
 = link_to 'Edit', edit_client_path(@client)
 '|

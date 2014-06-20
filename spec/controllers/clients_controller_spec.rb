@@ -23,7 +23,7 @@ describe ClientsController do
   # This should return the minimal set of attributes required to create a valid
   # Client. As you add validations to Client, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { {  } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe ClientsController do
       it "assigns a newly created but unsaved client as @client" do
         # Trigger the behavior that occurs when invalid params are submitted
         Client.any_instance.stub(:save).and_return(false)
-        post :create, {:client => { "name" => "invalid value" }}, valid_session
+        post :create, {:client => {  }}, valid_session
         assigns(:client).should be_a_new(Client)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Client.any_instance.stub(:save).and_return(false)
-        post :create, {:client => { "name" => "invalid value" }}, valid_session
+        post :create, {:client => {  }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe ClientsController do
         # specifies that the Client created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Client.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => client.to_param, :client => { "name" => "MyString" }}, valid_session
+        Client.any_instance.should_receive(:update).with({ "these" => "params" })
+        put :update, {:id => client.to_param, :client => { "these" => "params" }}, valid_session
       end
 
       it "assigns the requested client as @client" do
@@ -128,7 +128,7 @@ describe ClientsController do
         client = Client.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Client.any_instance.stub(:save).and_return(false)
-        put :update, {:id => client.to_param, :client => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => client.to_param, :client => {  }}, valid_session
         assigns(:client).should eq(client)
       end
 
@@ -136,7 +136,7 @@ describe ClientsController do
         client = Client.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Client.any_instance.stub(:save).and_return(false)
-        put :update, {:id => client.to_param, :client => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => client.to_param, :client => {  }}, valid_session
         response.should render_template("edit")
       end
     end

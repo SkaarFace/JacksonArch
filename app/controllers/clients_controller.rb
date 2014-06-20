@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+
 
   # GET /clients
   # GET /clients.json
@@ -24,7 +26,9 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
+    @user = current_user
     @client = Client.new(client_params)
+    @client.user_id = @user.id
 
     respond_to do |format|
       if @client.save
@@ -69,6 +73,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :phone_number)
+      params.require(:client).permit(:user_id, :name)
     end
 end

@@ -3,8 +3,6 @@ h1 Listing clients
 table
   thead
     tr
-      th Name
-      th Phone number
       th
       th
       th
@@ -12,8 +10,6 @@ table
   tbody
     - @clients.each do |client|
       tr
-        td = client.name
-        td = client.phone_number
         td = link_to 'Show', client
         td = link_to 'Edit', edit_client_path(client)
         td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete
