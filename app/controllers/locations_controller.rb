@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :xml, :json
 
   # GET /locations
   # GET /locations.json
@@ -14,7 +15,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
-    @location = Location.new
+    respond_with(@location)
   end
 
   # GET /locations/1/edit
@@ -24,11 +25,11 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    @location = Location.new(location_params)
+    @location = @user.location.create(location_params)
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to [@location.user, @location], notice: 'Location was successfully created.' }
         format.json { render action: 'show', status: :created, location: @location }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class LocationsController < ApplicationController
   def update
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to [@location.user, @location], notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -62,13 +63,19 @@ class LocationsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_location
-      @location = Location.find(params[:id])
+      if params[:user_id]
+        @location = User.find(params[:user_id]).location
+      else
+        @location = Location.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:address_line_1, :address_line_2, :zip_code, :state, :city, :latitude, :longitude)
+      params.require(:location).permit(:address_line_1, :address_line_2, 
+        :zip_code, :state, :city, :latitude, :longitude)
     end
 end

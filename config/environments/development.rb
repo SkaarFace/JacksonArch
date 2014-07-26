@@ -27,6 +27,8 @@ JacksonArch::Application.configure do
   # number of complex assets.
   config.assets.debug = true  
 
+  Geocoder::Configuration.lookup = :yandex
+
     config.action_mailer.smtp_settings = {
       :address   => "smtp.mandrillapp.com",
       :port      => 587,

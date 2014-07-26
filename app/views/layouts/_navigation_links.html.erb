@@ -2,17 +2,16 @@
 <% if user_signed_in? %>
   <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Users', users_path %></li>
   <% if current_user.has_role?(:user) %>
-    <li>Test</li>
+    <li><%= link_to 'Jobs', jobs_path %></li>
   <% end %>
   <% if current_user.has_role?(:admin) %>
-    <li><%= link_to 'Manage Job Categories', job_categories_path %></li>
-    <li><%= link_to 'Manage Job Types', job_types_path %></li>
-    <li><%= link_to 'Manage Contracts', contracts_path %></li>
+    <li><%= link_to 'Manage Job Categories', admin_job_categories_path %></li>
+    <li><%= link_to 'Manage Job Types', admin_job_types_path %></li>
+    <li><%= link_to 'Manage Contracts', admin_contracts_path %></li>
+    <li><%= link_to 'Users', users_path %></li>
   <% end %>
   <% if current_user.has_role?(:client) %>
-    <li>Test</li>
   <% end %>
 <% else %>
   <li><%= link_to 'Login', new_user_session_path %></li>

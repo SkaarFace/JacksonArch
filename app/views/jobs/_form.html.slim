@@ -1,9 +1,0 @@
-= simple_form_for(@job) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.association :job_type, :include_blank => false, :label_method => :name
-    = f.association :contract, :include_blank => false, :label_method => :classification
-
-  .form-actions
-    = f.button :submit

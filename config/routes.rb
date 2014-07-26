@@ -1,5 +1,19 @@
 JacksonArch::Application.routes.draw do
-  resources :clients
+  root :to => "home#index"
+
+
+  resources :clients do
+    resources :jobs, :controller => "clients/jobs"
+    resources :client_locations
+  end
+
+  namespace :admin do
+    resources :contracts
+    resources :job_types
+    resources :job_categories
+    resources :jobs
+    resources :locations
+  end
 
   resources :contracts
 
@@ -11,7 +25,12 @@ JacksonArch::Application.routes.draw do
 
   resources :locations
 
-  root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :users
+
+  resources :users do
+    resources :jobs
+    get 'location', to: 'locations#show'
+    resources :locations, :only => [:show, :update, :edit]
+  end
+
 end

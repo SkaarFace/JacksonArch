@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Contract Type:
+  = @job.contract.classification
+p
+  strong Job Type:
+  = @job.job_type.name
+p
+  strong User:
+  = @job.client.name
+
+p
+  strong Applicants:
+  tbody
+    - @job.applicants.each do |applicant|
+      tr
+        td = applicant.name
+        td = link_to 'Show', applicant
+
+- unless @job.accepted.nil?
+  strong 
+    p Accepted:
+    = @job.accepted.name
+
+br
+
+= link_to 'Edit', edit_client_job_path(@job.client, @job)
+'|
+= link_to 'Back', client_jobs_path

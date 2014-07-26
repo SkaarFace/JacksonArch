@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619234305) do
+ActiveRecord::Schema.define(version: 20140707013514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "client_locations", force: true do |t|
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "zip_code"
+    t.string   "state"
+    t.string   "city"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "clients", force: true do |t|
     t.integer  "job_id"
@@ -50,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140619234305) do
     t.integer  "contract_id"
     t.integer  "job_type_id"
     t.integer  "client_id"
+    t.integer  "client_location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140619234305) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"

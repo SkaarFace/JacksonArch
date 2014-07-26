@@ -1,0 +1,13 @@
+p#notice = notice
+
+p 
+  | Contract Classification: 
+  = @contract.classification
+
+p
+  | Contract Terms: 
+  = @contract.terms
+
+= link_to 'Edit', edit_admin_contract_path(@contract)
+'|
+= link_to 'Back', admin_contracts_path

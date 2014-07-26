@@ -1,0 +1,19 @@
+h1 Listing client_locations
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @client_locations.each do |client_location|
+      tr
+        td = link_to 'Show', [client_location.client, client_location]
+        td = link_to 'Edit', edit_client_client_location_path(client_location.client, client_location)
+        td = link_to 'Destroy', [client_location.client, client_location], data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Client location', new_client_client_location_path

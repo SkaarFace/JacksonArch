@@ -4,6 +4,7 @@ class CreateJobs < ActiveRecord::Migration
       t.belongs_to :contract
       t.belongs_to :job_type
       t.belongs_to :client
+      t.belongs_to :client_location
       t.timestamps
     end
   end

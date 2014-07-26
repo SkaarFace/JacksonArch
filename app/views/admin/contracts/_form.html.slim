@@ -1,0 +1,8 @@
+= simple_form_for([:admin, @contract]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    =f.input :classification
+    =f.input :terms
+  .form-actions
+    = f.button :submit

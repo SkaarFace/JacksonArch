@@ -1,0 +1,21 @@
+h1 Listing job_types
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @job_types.each do |job_type|
+      tr
+        td = job_type.name
+        td = link_to 'Show', [:admin, job_type]
+        td = link_to 'Edit', edit_admin_job_type_path(job_type)
+        td = link_to 'Destroy', [:admin, job_type], data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Job type', new_admin_job_type_path

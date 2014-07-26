@@ -1,8 +1,8 @@
-h1 Editing job
+= simple_form_for(@job) do |f|
+  = f.error_notification
 
-== render 'form'
+  .form-inputs
+    = f.association :job_type, :include_blank => false, :label_method => :name
 
-= link_to 'Show', @job
-'|
-= link_to 'Back', jobs_path
-
+  .form-actions
+    = f.button :submit

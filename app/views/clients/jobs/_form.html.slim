@@ -1,0 +1,13 @@
+= simple_form_for([@client, @job]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :job_type, :include_blank => false, :label_method => :name
+    = f.association :contract, :include_blank => false, :label_method => :classification
+    = f.association :client_location, :include_blank => false,
+    :label_method => :address
+    - unless @job.applicants.empty?
+      = f.association :applicants, :label_method => :name
+
+  .form-actions
+    = f.button :submit

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    @location = @user.location
     if @user.update params.require(:user).permit!
       redirect_to users_path, :notice => "User updated."
     else

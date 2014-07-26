@@ -1,15 +1,11 @@
 p#notice = notice
 
 p
-  strong Contract Type:
-  = @job.contract.classification
-p
-  strong Job Type:
-  = @job.job_type.name
-p
-  strong User:
   = @job.client.name
 
-= link_to 'Edit', edit_job_path(@job)
-'|
+p
+  = @job.client_location.address
+
+= link_to "Apply", edit_job_path(@job)
+
 = link_to 'Back', jobs_path
