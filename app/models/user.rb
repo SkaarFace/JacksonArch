@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_one :client
   has_one :location, :autosave => true
+  has_one :user_profile, :autosave => true
   before_create :build_location
+  before_create :build_user_profile
 
   rolify
 
@@ -16,5 +18,5 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :profile_pic, :content_type => 
     /\Aimage\/.*\Z/
 
-    accepts_nested_attributes_for :location
+  accepts_nested_attributes_for :location
 end

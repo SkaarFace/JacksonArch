@@ -1,4 +1,5 @@
 JacksonArch::Application.routes.draw do
+
   root :to => "home#index"
 
 
@@ -30,7 +31,10 @@ JacksonArch::Application.routes.draw do
   resources :users do
     resources :jobs
     get 'location', to: 'locations#show'
+    resource :user_profile, :only => [:edit, :update, :show]
     resources :locations, :only => [:show, :update, :edit]
   end
+
+  resource :user_profile, :only => [:edit, :update, :show]
 
 end
