@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_one :location, through: :user_profile
   has_one :user_profile, :autosave => true
   has_many :looking_for_jobs, through: :user_profile
-  before_create :build_location
   before_create :build_user_profile
 
   rolify
