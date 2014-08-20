@@ -3,10 +3,6 @@ p#notice = notice
 p
   = @client.name
 
-p
-  = @client.user.name
-
-
 = link_to 'Edit', edit_client_path(@client)
 '|
 = link_to 'Back', clients_path

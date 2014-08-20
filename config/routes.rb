@@ -1,5 +1,11 @@
 JacksonArch::Application.routes.draw do
 
+  resources :looking_for_jobs
+
+  resources :skills
+
+  resources :educations
+
   root :to => "home#index"
 
 

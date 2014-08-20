@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810205238) do
+ActiveRecord::Schema.define(version: 20140810234517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 20140810205238) do
     t.string   "classification"
     t.string   "terms"
     t.integer  "job_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "educations", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,6 +87,12 @@ ActiveRecord::Schema.define(version: 20140810205238) do
     t.datetime "updated_at"
   end
 
+  create_table "looking_for_jobs", force: true do |t|
+    t.integer  "user_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -93,8 +104,17 @@ ActiveRecord::Schema.define(version: 20140810205238) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
+  create_table "skills", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_profiles", force: true do |t|
     t.integer  "user_id"
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -113,7 +133,6 @@ ActiveRecord::Schema.define(version: 20140810205238) do
     t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

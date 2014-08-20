@@ -1,0 +1,19 @@
+h1 Listing looking_for_jobs
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @looking_for_jobs.each do |looking_for_job|
+      tr
+        td = link_to 'Show', looking_for_job
+        td = link_to 'Edit', edit_looking_for_job_path(looking_for_job)
+        td = link_to 'Destroy', looking_for_job, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Looking for job', new_looking_for_job_path
