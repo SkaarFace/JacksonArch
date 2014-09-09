@@ -32,7 +32,7 @@ JacksonArch::Application.routes.draw do
 
   resources :locations
 
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :user, :controllers => {:registrations => "registrations"}
 
   resources :users do
     resources :jobs
