@@ -26,6 +26,27 @@ ActiveRecord::Schema.define(version: 20140906022152) do
     t.datetime "updated_at"
   end
 
+  create_table "client_locations", force: true do |t|
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "zip_code"
+    t.string   "state"
+    t.string   "city"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clients", force: true do |t|
+    t.integer  "job_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "contracts", force: true do |t|
     t.string   "classification"
     t.string   "terms"
@@ -99,6 +120,16 @@ ActiveRecord::Schema.define(version: 20140906022152) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "skills", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_profiles", force: true do |t|
+    t.integer  "user_id"
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
