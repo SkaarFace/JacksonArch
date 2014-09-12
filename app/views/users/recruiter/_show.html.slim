@@ -2,7 +2,7 @@ p#notice = notice
 
 div class="panel profile-content"
 
-  - if @user.profile.profile_picture
+  - if @user.profile.profile_picture.exists?
     = image_tag @user.profile.profile_picture.url(:thumb)
   p
     strong First Name:

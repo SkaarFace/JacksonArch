@@ -1,7 +1,7 @@
 p#notice = notice
 
 div class="panel profile-content"
-  - if @recruiter_profile.profile_picture
+  - if @recruiter_profile.exists?
     = image_tag @recruiter_profile.profile_picture.url(:thumb)
   p
     strong First Name:
