@@ -32,7 +32,7 @@ JacksonArch::Application.routes.draw do
 
   resources :locations
 
-  devise_for :user, :controllers => {:registrations => "registrations"}
+  get 'my_profile', to: 'users#show'
 
   resources :users do
     resources :jobs
@@ -41,6 +41,7 @@ JacksonArch::Application.routes.draw do
     resources :locations, :only => [:show, :update, :edit]
   end
 
-  resource :user_profile, :only => [:edit, :update, :show]
+  devise_for :user, path: "/registrations", :controllers => {:registrations => "registrations"}
+
 
 end
