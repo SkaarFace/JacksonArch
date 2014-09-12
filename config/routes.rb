@@ -32,6 +32,12 @@ JacksonArch::Application.routes.draw do
 
   resources :locations
 
+  resources :applicant_profiles
+
+  resources :admin_profiles
+
+  resources :recruiter_profiles
+
   get 'my_profile', to: 'users#show'
 
   resources :users do

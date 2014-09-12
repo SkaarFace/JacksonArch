@@ -1,0 +1,31 @@
+p#notice = notice
+
+p
+  strong First Name:
+  = @user.profile.first_name
+p
+  strong Last Name:
+  = @user.profile.last_name
+p
+  strong Middle Initial:
+  = @user.profile.middle_initial
+p
+  strong Phone Number:
+  = @user.profile.phone_number
+p
+  strong Address Line 1:
+  = @user.profile.first_name
+p
+  strong Address Line 2:
+  = @user.profile.first_name
+p
+  strong City:
+  = @user.profile.first_name
+p
+  strong State:
+  = @user.profile.first_name
+p
+  strong Zip Code:
+  = @user.profile.first_name
+
+= link_to 'Edit', edit_applicant_profile_path(@user.profile)

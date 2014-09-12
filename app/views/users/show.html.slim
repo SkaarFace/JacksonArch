@@ -1,6 +1,6 @@
-h3 User
-p
-  | User: #{@user.name}
-p
-  | Email: #{@user.email if @user.email}
-= link_to 'Edit account', edit_user_registration_path
+-if @user.profile_type == "ApplicantProfile"
+  == render 'users/applicant/show'
+-elsif @user.profile_type == "RecruiterProfile"
+  == render 'users/recruiter/show'
+-else
+  == render 'users/admin_profile'

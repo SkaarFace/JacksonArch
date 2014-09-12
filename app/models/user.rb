@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
 
   belongs_to :profile, polymorphic: true
   validates :profile_type, presence: true
+
+  accepts_nested_attributes_for :profile
 end

@@ -1,0 +1,35 @@
+p#notice = notice
+
+div class="panel profile-content"
+
+  - if @user.profile.profile_picture
+    = image_tag @user.profile.profile_picture.url(:thumb)
+  p
+    strong First Name:
+    = @user.profile.first_name
+  p
+    strong Last Name:
+    = @user.profile.last_name
+  p
+    strong Middle Initial:
+    = @user.profile.middle_initial
+  p
+    strong Phone Number:
+    = @user.profile.phone_number
+  p
+    strong Address line 1:
+    = @user.profile.address_line_1
+  p
+    strong Address line 2:
+    = @user.profile.address_line_2
+  p
+    strong Zip code:
+    = @user.profile.zip_code
+  p
+    strong State:
+    = @user.profile.state
+  p
+    strong City:
+    = @user.profile.city
+
+  = link_to 'Edit', edit_recruiter_profile_path(@user.profile)

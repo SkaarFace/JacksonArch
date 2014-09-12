@@ -1,0 +1,19 @@
+= simple_form_for(@recruiter_profile, :html => { :class => "form-horizontal"} ) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.file_field :profile_picture
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :middle_initial
+    = f.input :phone_number
+    = f.input :address_line_1
+    = f.input :address_line_2
+    = f.input :city
+    = f.input :state
+    = f.input :zip_code
+
+
+  .form-actions
+    = f.button :submit
+

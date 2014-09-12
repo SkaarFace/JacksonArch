@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906022152) do
+ActiveRecord::Schema.define(version: 20140912044007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,19 +22,17 @@ ActiveRecord::Schema.define(version: 20140906022152) do
   end
 
   create_table "applicant_profiles", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "client_locations", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_initial"
+    t.string   "phone_number"
     t.string   "address_line_1"
     t.string   "address_line_2"
-    t.string   "zip_code"
-    t.string   "state"
     t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -104,8 +102,23 @@ ActiveRecord::Schema.define(version: 20140906022152) do
   end
 
   create_table "recruiter_profiles", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_initial"
+    t.string   "phone_number"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_picture_file_name"
+    t.string   "profile_picture_content_type"
+    t.integer  "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
   end
 
   create_table "roles", force: true do |t|
@@ -120,16 +133,6 @@ ActiveRecord::Schema.define(version: 20140906022152) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "skills", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_profiles", force: true do |t|
-    t.integer  "user_id"
-    t.string   "profile_pic_file_name"
-    t.string   "profile_pic_content_type"
-    t.integer  "profile_pic_file_size"
-    t.datetime "profile_pic_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
